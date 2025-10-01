@@ -32,17 +32,23 @@ export const projectType = defineType({
     defineField({
       name: 'description',
       type: 'text',
-      validation: (rule) => rule.required().max(200),
+      validation: (rule) => rule.required().max(280),
     }),
     defineField({
       name: 'long_description',
-      type: 'text',
+      title: 'Long Description',
+      type: 'array',
+      of: [{ type: 'block' }], // permite HTML/Rich Text
       validation: (rule) => rule.required().max(1000),
     }),
     defineField({
       name: 'stack',
+      title: 'Stack',
       type: 'array',
-      of: [{type: 'string'}],
+      of: [{
+          type: 'reference',
+          to: [{ type: 'skillType' }],
+        },],
       validation: (rule) => rule.required().min(1),
     }),
     defineField({
