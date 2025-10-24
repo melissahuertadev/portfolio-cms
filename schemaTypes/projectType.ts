@@ -62,7 +62,11 @@ export const projectType = defineType({
       validation: (rule) => rule.uri({scheme: ['http', 'https']}),
     }),
     defineField({
-      name: 'image',
+      name: 'coverImage',
+      type: 'image',
+    }),
+    defineField({
+      name: 'images',
       type: 'array',
       of: [{type: 'image'}],
       validation: (rule) => rule.required().min(1),
